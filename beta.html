@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://wloldqlgmysrcqyjyqgx.supabase.co; base-uri 'none'; form-action 'none'">
+<title>Test Vet Co-op | Join the beta list</title>
+<style>
+  :root {
+    --navy: #14243d;
+    --olive: #4a5c3d;
+    --gold: #c4943d;
+    --bg: #f2f2eb;
+    --card: #ffffff;
+    --text: #14243d;
+    --muted: #5d6675;
+    --line: #d9dbd2;
+    --error: #9b2c2c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d1626; --card: #14243d; --text: #f2f2eb; --muted: #aab3c2; --line: #2d3d57; --error: #ff9b9b; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 40px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 8px 30px rgba(20, 36, 61, 0.12);
+  }
+  .brand { margin: 0 0 16px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  h1 { margin: 0 0 10px; font-size: 1.6rem; line-height: 1.2; }
+  p { margin: 0 0 14px; color: var(--muted); }
+  label, legend { display: block; margin: 18px 0 6px; font-weight: 600; font-size: 0.95rem; }
+  .hint { font-weight: 400; color: var(--muted); }
+  input[type=text], input[type=email], select {
+    width: 100%; padding: 12px; font-size: 1rem; color: var(--text); background: transparent;
+    border: 1px solid var(--line); border-radius: 10px;
+  }
+  input:focus, select:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  .choices { display: grid; gap: 8px; }
+  .choice { display: flex; align-items: center; gap: 10px; margin: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font-weight: 400; cursor: pointer; }
+  .choice input { width: 18px; height: 18px; accent-color: var(--olive); flex: none; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 22px; font-weight: 400; font-size: 0.92rem; color: var(--muted); }
+  .consent input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--olive); flex: none; }
+  button {
+    width: 100%; margin-top: 22px; padding: 14px; font-size: 1.05rem; font-weight: 700; color: #fff;
+    background: var(--olive); border: 0; border-radius: 12px; cursor: pointer;
+  }
+  button[disabled] { opacity: 0.6; cursor: default; }
+  .error { margin-top: 14px; color: var(--error); font-weight: 600; }
+  .done { text-align: center; padding: 12px 0; }
+  .badge { width: 72px; height: 72px; margin: 0 auto 20px; border-radius: 50%; background: var(--olive); display: flex; align-items: center; justify-content: center; }
+  .badge svg { width: 36px; height: 36px; }
+  .platform { padding: 12px 14px; border-radius: 10px; background: rgba(196, 148, 61, 0.16); color: var(--text); }
+  .fineprint { margin-top: 20px; font-size: 0.82rem; }
+  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">Vet Co-op</p>
+
+  <section id="formSection">
+    <h1>Help us test Vet Co-op</h1>
+    <p>Vet Co-op is a free community app for veterans: connect with other vets, share your resume and work history, find events, and message people you trust. We're looking for veterans to try it before it opens to everyone.</p>
+    <p class="platform"><strong>iPhone only for now.</strong> The beta runs on iPhones. An Android version is planned. If you use Android, leave your email anyway and we'll tell you when it's ready.</p>
+    <p>Leave your email and we'll invite you when your spot opens up.</p>
+
+    <form id="form" novalidate>
+      <label for="first">First name <span class="hint">(optional)</span></label>
+      <input id="first" type="text" autocomplete="given-name" maxlength="60">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
+
+      <label for="role">I am a <span class="hint">(optional)</span></label>
+      <select id="role">
+        <option value="">Choose one</option>
+        <option value="veteran">Veteran</option>
+        <option value="active">Active-duty service member</option>
+        <option value="reserve_guard">Reserve or National Guard member</option>
+        <option value="family">Military family member</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="branch">Branch of service <span class="hint">(optional)</span></label>
+      <select id="branch">
+        <option value="">Choose one</option>
+        <option>U.S. Army</option>
+        <option>U.S. Navy</option>
+        <option>U.S. Marine Corps</option>
+        <option>U.S. Air Force</option>
+        <option>U.S. Space Force</option>
+        <option>U.S. Coast Guard</option>
+        <option>Other</option>
+      </select>
+
+      <fieldset>
+        <legend>My phone is</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="device" value="iphone"> iPhone (can test the beta)</label>
+          <label class="choice"><input type="radio" name="device" value="android"> Android (notify me when it's ready)</label>
+          <label class="choice"><input type="radio" name="device" value="other"> Something else</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>What would you use it for? <span class="hint">(pick any)</span></legend>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="interest" value="networking"> Meeting other veterans</label>
+          <label class="choice"><input type="checkbox" name="interest" value="jobs"> Finding work</label>
+          <label class="choice"><input type="checkbox" name="interest" value="resume"> Building a stronger resume</label>
+          <label class="choice"><input type="checkbox" name="interest" value="events"> Local events</label>
+          <label class="choice"><input type="checkbox" name="interest" value="messaging"> Private messaging and groups</label>
+          <label class="choice"><input type="checkbox" name="interest" value="benefits"> Benefits and resources</label>
+        </div>
+      </fieldset>
+
+      <!-- A hidden field only bots fill in. -->
+      <div class="trap" aria-hidden="true">
+        <label>Leave this empty <input id="website" type="text" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <label class="consent" for="consent">
+        <input id="consent" type="checkbox">
+        <span>I agree to be emailed about the Vet Co-op beta and about an Android version. We use your email only for that: we won't share it with anyone, and you can ask to be removed by replying "remove" to any email we send.</span>
+      </label>
+
+      <button id="submit" type="submit">Join the beta list</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+    <p class="fineprint">Free to join. Your spot on this list doesn't create an account or share anything else about you.</p>
+  </section>
+
+  <section id="doneSection" class="done" hidden>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h1>You're on the list</h1>
+    <p id="doneIphone">Thank you. We'll email you when it's time to try Vet Co-op. Know another veteran with an iPhone who'd like to test it? Pass this page along.</p>
+    <p id="doneOther" hidden>Thank you. Vet Co-op is iPhone-only for now, so we can't invite you to test yet. We'll email you as soon as an Android version is ready.</p>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var ENDPOINT = "https://wloldqlgmysrcqyjyqgx.supabase.co/rest/v1/rpc/submit_beta_interest";
+    // Public, read-only-by-design key (the same one built into the app). It can only call the sign-up function.
+    var KEY = "sb_publishable_faD9UUYhg5b43aA5GTfTlg_ZMuaE2e_";
+
+    // A link like beta.html?ref=facebook tells us which post brought the person here.
+    var source = "";
+    try { source = (new URLSearchParams(window.location.search).get("ref") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40); } catch (e) {}
+
+    var form = document.getElementById("form");
+    var button = document.getElementById("submit");
+    var errorBox = document.getElementById("error");
+
+    function showError(text) { errorBox.textContent = text; errorBox.hidden = false; }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      errorBox.hidden = true;
+
+      var email = document.getElementById("email").value.trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { showError("Please enter a valid email address."); return; }
+      if (!document.getElementById("consent").checked) { showError("Please tick the box to agree to be emailed."); return; }
+
+      var device = form.querySelector("input[name=device]:checked");
+      var interests = Array.prototype.map.call(form.querySelectorAll("input[name=interest]:checked"), function (box) { return box.value; });
+
+      button.disabled = true;
+      button.textContent = "Sending...";
+
+      fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "apikey": KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          _email: email,
+          _first_name: document.getElementById("first").value.trim() || null,
+          _branch: document.getElementById("branch").value || null,
+          _role: document.getElementById("role").value || null,
+          _device: device ? device.value : null,
+          _interests: interests,
+          _source: source || null,
+          _consent: true,
+          _website: document.getElementById("website").value
+        })
+      }).then(function (response) {
+        return response.text().then(function (text) { return { ok: response.ok, text: text }; });
+      }).then(function (result) {
+        if (result.ok) {
+          var notIphone = device && device.value !== "iphone";
+          document.getElementById("doneIphone").hidden = notIphone;
+          document.getElementById("doneOther").hidden = !notIphone;
+          document.getElementById("formSection").hidden = true;
+          document.getElementById("doneSection").hidden = false;
+          window.scrollTo(0, 0);
+          return;
+        }
+        if (result.text.indexOf("INVALID_EMAIL") !== -1) showError("That email address doesn't look right. Please check it and try again.");
+        else if (result.text.indexOf("CONSENT_REQUIRED") !== -1) showError("Please tick the box to agree to be emailed.");
+        else if (result.text.indexOf("TOO_MANY") !== -1) showError("We're getting a lot of sign-ups right now. Please try again in an hour.");
+        else showError("Something went wrong. Please try again in a moment.");
+        button.disabled = false;
+        button.textContent = "Join the beta list";
+      }).catch(function () {
+        showError("We couldn't reach the server. Check your connection and try again.");
+        button.disabled = false;
+        button.textContent = "Join the beta list";
+      });
+    });
+  })();
+</script>
+</body>
+</html>
