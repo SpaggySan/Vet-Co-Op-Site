@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://wloldqlgmysrcqyjyqgx.supabase.co; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src https://wloldqlgmysrcqyjyqgx.supabase.co; img-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Test Vet Co-op | Join the beta list</title>
 <style>
   :root {
@@ -67,6 +67,13 @@
   .platform { padding: 12px 14px; border-radius: 10px; background: rgba(196, 148, 61, 0.16); color: var(--text); }
   .fineprint { margin-top: 20px; font-size: 0.82rem; }
   .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .shots { margin: 22px 0 6px; }
+  .shots h2 { margin: 0 0 4px; font-size: 1.1rem; }
+  .shots .row { display: flex; gap: 12px; overflow-x: auto; padding: 8px 2px 14px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .shots figure { flex: 0 0 62%; max-width: 240px; margin: 0; scroll-snap-align: center; }
+  .shots img { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(20, 36, 61, 0.18); }
+  .shots figcaption { margin-top: 8px; font-size: 0.85rem; color: var(--muted); text-align: center; }
+  .shots .note { font-size: 0.78rem; text-align: center; margin: 0; }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -78,6 +85,16 @@
     <h1>Help us test Vet Co-op</h1>
     <p>Vet Co-op is a free community app for veterans: connect with other vets, share your resume and work history, find events, and message people you trust. We're looking for veterans to try it before it opens to everyone.</p>
     <p class="platform"><strong>iPhone only for now.</strong> The beta runs on iPhones. An Android version is planned. If you use Android, leave your email anyway and we'll tell you when it's ready.</p>
+    <div class="shots">
+      <h2>A quick look inside</h2>
+      <div class="row">
+        <figure><img src="screens/feed.png" alt="Community feed with posts from veterans" width="600" height="1304" loading="lazy"><figcaption>Share updates with veterans near you</figcaption></figure>
+        <figure><img src="screens/resume.png" alt="A member profile with a military service and work history resume" width="600" height="1304" loading="lazy"><figcaption>Build a resume that speaks civilian</figcaption></figure>
+        <figure><img src="screens/events.png" alt="Upcoming veteran events list" width="600" height="1304" loading="lazy"><figcaption>Find local events and meetups</figcaption></figure>
+      </div>
+      <p class="note">Sample screens with fictional people. Beta features may change.</p>
+    </div>
+
     <p>Leave your email and we'll invite you when your spot opens up.</p>
 
     <form id="form" novalidate>
