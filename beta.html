@@ -183,6 +183,21 @@
     var source = "";
     try { source = (new URLSearchParams(window.location.search).get("ref") || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40); } catch (e) {}
 
+    // Anonymous visit count: no cookies, no IP address, no name or email. We only learn that a page view happened,
+    // which link it came from, and whether this browser has opened the page before (a single "seen" flag).
+    (function () {
+      var isNew = true;
+      try { isNew = !window.localStorage.getItem("vc_seen"); window.localStorage.setItem("vc_seen", "1"); } catch (e) {}
+      try {
+        fetch("https://wloldqlgmysrcqyjyqgx.supabase.co/rest/v1/rpc/record_beta_visit", {
+          method: "POST",
+          headers: { "apikey": KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({ _source: source || null, _new: isNew }),
+          keepalive: true
+        }).catch(function () {});
+      } catch (e) {}
+    })();
+
     var form = document.getElementById("form");
     var button = document.getElementById("submit");
     var errorBox = document.getElementById("error");
